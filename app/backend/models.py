@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-
 """ Дата создания/изменения/удаления"""
 
 
@@ -84,7 +83,17 @@ class JoinedUsers(DataTimeModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="likes")
 
     def __str__(self) -> str:
-        return f'{self.user.username} присоединился к {self.idea.idea.title}'
+        return f'{self.user.username} присоединился к {self.idea.title}'
 
 
-#class Rubrics()
+class Meta:
+    verbose_name = 'Рубрика'
+    verbose_name_plural = 'Рубрики'
+    ordering = DataTimeModel.Meta.ordering
+
+
+class Rubrics(DataTimeModel):
+    rubric = models.ForeignKey(Idea, verbose_name='Заголовок', on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f'{self.idea.title} {self.idea.rubrics} {self.idea.preview}'
