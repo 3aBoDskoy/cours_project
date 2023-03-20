@@ -95,6 +95,9 @@ class Meta:
 class Rubrics(DataTimeModel):
     rubric = models.ForeignKey(Idea, verbose_name='Заголовок', on_delete=models.CASCADE)
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 01f79a04d963af0f9160be6a8a7711a9396974bb
     def __str__(self) -> str:
         return f'{self.idea.title} {self.idea.rubrics} {self.idea.preview}'
