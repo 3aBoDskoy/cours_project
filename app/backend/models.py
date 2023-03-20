@@ -32,11 +32,11 @@ class Idea(DataTimeModel):
     objects = ObjectsManager()
     autor = models.CharField(verbose_name='Никнейм', max_length=22)
     title = models.CharField(verbose_name='Заголовок', max_length=255)
-    rubrics = models.CharField(verbose_name='Рубрика', max_length=255)  # тут надо подумать
+    rubrics = models.CharField(verbose_name='Рубрика', max_length=255)
     preview = models.CharField(verbose_name='Описание', max_length=1000)
     body = models.TextField(verbose_name='Содержание')
 
-    body_as_markdown = models.BooleanField(verbose_name='Тип Идеи',  # тут не понял что это :(
+    body_as_markdown = models.BooleanField(verbose_name='Тип Идеи',
                                            default=False)
 
     def __str__(self) -> str:
@@ -95,5 +95,9 @@ class Meta:
 class Rubrics(DataTimeModel):
     rubric = models.ForeignKey(Idea, verbose_name='Заголовок', on_delete=models.CASCADE)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01f79a04d963af0f9160be6a8a7711a9396974bb
     def __str__(self) -> str:
         return f'{self.idea.title} {self.idea.rubrics} {self.idea.preview}'
